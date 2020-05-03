@@ -1,0 +1,10 @@
+{"global":{
+  "$--color-primary":"#AA0000",
+  "$--color-success":"#00AA00",
+  "$--color-warning":"#F7A428",
+  "$--color-danger":"#FF2020",
+  "$--color-text-primary":"#161616",
+  "$--color-info":"#323232",
+  "$--color-text-placeholder":"#646464",
+  "$--color-white":"#FFFFFF"},"local":{}
+}

@@ -1,0 +1,95 @@
+{
+  "races": [
+    {
+      "name": "Geit",
+      "culture": "Norse",
+      "ability_scores": [
+        { "ability": "Con", "modifier": "+2" },
+        { "ability": "Str", "modifier": "+2" },
+        { "ability": "Cha", "modifier": "-2" }
+      ],
+      "age": {
+        "base": "14",
+        "intuitive": "1d4",
+        "self_taught": "1d6",
+        "trained": "2d6"
+      },
+      "height": {
+        "male_base": "58",
+        "female_base": "53",
+        "modifier": "2d4"
+      },
+      "weight": {
+        "male_base": "150",
+        "female_base": "120",
+        "modifier": "2d4*7"
+      },
+      "traits": [
+        {
+          "defensive_traits": [
+            {
+              "name": "Hardy",
+              "description": "Geit gain a +2 racial bonus on saving throws against poison spells and spell-like abilities."
+            },
+            {
+              "name": "Mountain-Born",
+              "description": "Geit gain a +2 racial bonus on Acrobatics checks made to cross narrow ledges."
+            }
+          ],
+          "feat_&_skill_traits": [
+            {
+              "name": "Craftsman",
+              "description": "Geit gain a +2 racial bonus on Craft & Profession checks when using metal or stone."
+            },
+            {
+              "name": "Stonecunning",
+              "description": "Geit gain a +2 bonus on Perception checks to notice unusual stonework, such as traps and hidden doors. They receive a check to notice such features whenever they pass within 10 feet, whether or not they are actively looking."
+
+            }
+          ],
+          "Magical Traits": [],
+          "Movement Traits": [
+            "Mountaineer: Geit are immune to altitude sickness and do not lose their Dex bonus to AC when making Climb or Acrobatics checks to cross narrow or slippery surfaces.",
+            "Rock Stepper: Geit can skillfully navigate rocky terrain, ignoring difficult terrain caused by rubble, broken ground, or steep stairs."
+          ],
+          "Offense Traits": [
+            "Frenzy: Once a day, Geit can go into a frenzy upon taking damage. This frenzy lasts for 1 minute (10 rounds) and adds a +2 racial bonus to Constitution and Strength, but a -2 to AC.",
+            "Hatred: Geit gain a +1 racial bonus on attack rolls against Plant Creatures.",
+            "Weapon Familiarity: Geit are proficient with Warhammers and Dwarven weapons."
+          ],
+          "Senses Traits": [],
+          "Weakness Traits": [],
+          "Other Traits": [
+            "Dark Vision: Geit can see 60’ in total darkness."
+          ]
+        }
+      ],
+      "male_names": [
+        "Dolgrin",
+        "Grunyar",
+        "Harsk",
+        "Kazmuk",
+        "Morgrym",
+        "Rogar"
+      ],
+      "female_names": [
+        "Agna",
+        "Bodill",
+        "Ingra",
+        "Kotri",
+        "Runa",
+        "Rusilka",
+        "Yangrit"
+      ]
+    },
+    {
+      "name": "Caeth",
+      "culture": "Celtic",
+      "ability_scores": [
+        { "ability": "Cha", "modifier": "+2" },
+        { "ability": "Dex", "modifier": "+2" },
+        { "ability": "Wis", "modifier": "-2" }
+      ]
+    }
+  ]
+}

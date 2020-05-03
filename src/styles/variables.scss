@@ -1,0 +1,33 @@
+/* Custom Theme Colors
+$--color-primary: #AA0000;
+$--color-success: #00AA00;
+$--color-warning: #F7A428;
+$--color-danger: #FF2020;
+$--color-text-primary: #161616;
+$--color-info: #323232;
+$--color-text-placeholder: #646464;
+$--color-white: #FFFFFF;
+*/
+
+$headerBg:#000000;
+
+$menuBg:#323232;
+$menuHover:#263445;
+
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  headerBg: $headerBg;
+  menuBg: $menuBg;
+
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+
+}
