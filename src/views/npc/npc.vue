@@ -5,7 +5,7 @@
 
       <el-row>
         <el-col :span="10">
-          <el-form-item label="Name">
+          <el-form-item label="Name" icon="el-icon-female">
             <el-input v-model="npc.name"></el-input>
           </el-form-item>
         </el-col>
@@ -15,7 +15,6 @@
           </el-form-item>
         </el-col>
       </el-row>
-
 
       <el-row>
         <el-col :span="10">
@@ -30,12 +29,63 @@
         </el-col>
       </el-row>
 
-      <el-progress type="circle" :percentage="npc.str.perc" :color="customColors" :format="formatStr" :width="100" :stroke-width="12"></el-progress>
-      <el-progress type="circle" :percentage="npc.dex.perc" :color="customColors" :format="formatDex" :width="100" :stroke-width="12"></el-progress>
-      <el-progress type="circle" :percentage="npc.con.perc" :color="customColors" :format="formatCon" :width="100" :stroke-width="12"></el-progress>
-      <el-progress type="circle" :percentage="npc.int.perc" :color="customColors" :format="formatInt" :width="100" :stroke-width="12"></el-progress>
-      <el-progress type="circle" :percentage="npc.wis.perc" :color="customColors" :format="formatWis" :width="100" :stroke-width="12"></el-progress>
-      <el-progress type="circle" :percentage="npc.cha.perc" :color="customColors" :format="formatCha" :width="100" :stroke-width="12"></el-progress>
+      <el-row style="ablity-score">
+        <el-col :span="4">
+          <p>Str</p>
+          <el-progress type="dashboard" :percentage="npc.str.perc" :color="customColors" :format="formatStr" :width="100" :stroke-width="12"></el-progress>
+          <br>
+          <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease(npc.str)"></el-button>
+            <el-button icon="el-icon-plus" @click="increase(npc.str)"></el-button>
+          </el-button-group>
+        </el-col>
+
+        <el-col :span="4">
+          <p>Dex</p>
+          <el-progress type="dashboard" :percentage="npc.dex.perc" :color="customColors" :format="formatDex" :width="100" :stroke-width="12"></el-progress>
+          <br>
+          <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease(npc.dex)"></el-button>
+            <el-button icon="el-icon-plus" @click="increase(npc.dex)"></el-button>
+          </el-button-group>
+        </el-col>
+        <el-col :span="4">
+          <p>Con</p>
+          <el-progress type="dashboard" :percentage="npc.con.perc" :color="customColors" :format="formatCon" :width="100" :stroke-width="12"></el-progress>
+          <br>
+          <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease(npc.con)"></el-button>
+            <el-button icon="el-icon-plus" @click="increase(npc.con)"></el-button>
+          </el-button-group>
+        </el-col>
+        <el-col :span="4">
+          <p>Wis</p>
+          <el-progress type="dashboard" :percentage="npc.int.perc" :color="customColors" :format="formatInt" :width="100" :stroke-width="12"></el-progress>
+          <br>
+          <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease(npc.int)"></el-button>
+            <el-button icon="el-icon-plus" @click="increase(npc.int)"></el-button>
+          </el-button-group>
+        </el-col>
+        <el-col :span="4">
+          <p>Int</p>
+          <el-progress type="dashboard" :percentage="npc.wis.perc" :color="customColors" :format="formatWis" :width="100" :stroke-width="12"></el-progress>
+          <br>
+          <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease(npc.wis)"></el-button>
+            <el-button icon="el-icon-plus" @click="increase(npc.wis)"></el-button>
+          </el-button-group>
+        </el-col>
+        <el-col :span="4">
+          <p>Cha</p>
+          <el-progress type="dashboard" :percentage="npc.cha.perc" :color="customColors" :format="formatCha" :width="100" :stroke-width="12"></el-progress>
+          <br>
+          <el-button-group>
+            <el-button icon="el-icon-minus" @click="decrease(npc.cha)"></el-button>
+            <el-button icon="el-icon-plus" @click="increase(npc.cha)"></el-button>
+          </el-button-group>
+        </el-col>
+      </el-row>
 
       <!--el-form-item label="Activity zone">
         <el-select v-model="form.region" placeholder="please select your zone">
@@ -93,8 +143,9 @@ export default {
   data() {
     return {
       npc: {
-        name: '',
         race: '',
+        name: '',
+        sex: '',
         class: '',
         level: 0,
         str: { real: 0, perc: 0 },
@@ -113,12 +164,28 @@ export default {
       ]
     };
   },
-  created() {
+  mounted() {
     this.reRoll();
   },
   methods: {
     reRoll() {
-      this.npc.name = 'Dolgthrasi';
+      var race = races.races[Math.floor(Math.random() * races.races.length)];
+      var race = races.races[0]; //TODO: REMOVE LINE
+      console.log(race);
+
+      this.npc.sex = Math.floor(Math.random() * 2);
+      if (this.npc.sex == 1) {
+        var name_int = Math.floor(Math.random() * race.female_names.length);
+        this.npc.name = race.female_names[name_int];
+        document.querySelector(".el-form-item__label").classList.remove("el-icon-male");
+        document.querySelector(".el-form-item__label").classList.add("el-icon-female");
+      } else {
+        var name_int = Math.floor(Math.random() * race.male_names.length);
+        this.npc.name = race.male_names[name_int];
+        document.querySelector(".el-form-item__label").classList.remove("el-icon-female");
+        document.querySelector(".el-form-item__label").classList.add("el-icon-male");
+      }
+
       this.npc.race = 'Geit';
       this.npc.class = 'Fighter';
       this.npc.level = 10;
@@ -144,17 +211,20 @@ export default {
     formatInt(percentage) { return this.npc.int.real; },
     formatWis(percentage) { return this.npc.wis.real; },
     formatCha(percentage) { return this.npc.cha.real; },
-
-    increase() {
-      this.npc.str += 10;
-      if (this.npc.str > 100) {
-        this.npc.str = 100;
-      }
+    increase(abl) {
+      abl.real += 1;
+      this.checkPerc(abl);
     },
-    decrease() {
-      this.npc.str -= 10;
-      if (this.npc.str < 0) {
-        this.npc.str = 0;
+    decrease(abl) {
+      abl.real -= 1;
+      this.checkPerc(abl);
+    },
+    checkPerc(abl) {
+      abl.perc = (abl.real - 8) * 10;
+      if (abl.perc > 100) {
+        abl.perc = 100;
+      } else if (abl.perc < 0) {
+        abl.perc = 0;
       }
     },
 
