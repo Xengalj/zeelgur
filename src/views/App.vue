@@ -1,11 +1,11 @@
 <template>
   <div id="app">
 
-    <TrevHead />
+    <trev-head />
 
     <el-container >
       <el-aside width="200px" style="float: left;">
-        <TrevNav />
+        <trev-nav />
       </el-aside>
 
       <main class="main_content">
@@ -18,14 +18,14 @@
 
 <script>
 import styles from '@/styles/variables.scss';
-import TrevHead from './layout/header.vue';
-import TrevNav from './layout/nav.vue';
+import trevHead from './layout/header.vue';
+import trevNav from './layout/nav.vue';
 
 export default {
   name: 'App',
   components: {
-    TrevHead,
-    TrevNav,
+    trevHead,
+    trevNav,
   },
 };
 </script>

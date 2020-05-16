@@ -1,12 +1,232 @@
 {
   "races": [
     {
-      "name": "Geit",
+"name": "Zikaru",
+      "culture": "Sumerian",
+      "ability_scores": [
+        { "Wis": "+2" },
+        { "Str": "+2" },
+        { "Int": "-2" }
+      ],
+      "age": {
+        "base": "16",
+        "intuitive": "1d4",
+        "self_taught": "1d6",
+        "trained": "2d6"
+      },
+      "height": {
+        "male_base": "58",
+        "female_base": "53",
+        "modifier": "2d10"
+      },
+      "weight": {
+        "male_base": "120",
+        "female_base": "85",
+        "modifier": "2d10*5"
+      },
+      "traits": [
+        {
+          "defensive_traits": [
+            {
+              "name": "Hardy",
+              "description": "Geit gain a +2 racial bonus on saving throws against poison spells and spell-like abilities."
+            }
+          ],
+          "feat_&_skill_traits": [],
+          "Magical Traits": [],
+          "Movement Traits": [],
+          "Offense Traits": [],
+          "Senses Traits": [],
+          "Weakness Traits": [],
+          "Other Traits": []
+        }
+      ],
+"male_names": [
+  "Aakif",
+  "Andrezi",
+  "Bahram",
+  "Baolo",
+  "Dolok",
+  "Garidan",
+  "Jaali",
+  "Kousei",
+  "Kronug",
+  "Menas",
+  "Mitabu",
+  "Qorchi",
+  "Rubani",
+  "Seckor",
+  "Shokamb",
+  "Teruawa",
+  "Tomorbataar",
+  "Urson",
+  "Vjorchek",
+  "Zanlin"
+],
+"female_names": [
+  "Alinza",
+  "Beshkee",
+  "Chammady",
+  "Eudomia",
+  "Gerda",
+  "Izora",
+  "Jalket",
+  "Jayazi",
+  "Kalizama",
+  "Kamshi",
+  "Lestari",
+  "Meilin",
+  "Nalmida",
+  "Pontia",
+  "Shivkah",
+  "Udara",
+  "Valki",
+  "Waajida",
+  "Zova"
+]
+
+    },
+    {
+"name": "Amaru",
+      "culture": "Incan",
+      "ability_scores": [
+        { "Cha": "+2" },
+        { "Dex": "+2" },
+        { "Wis": "-2" }
+      ],
+      "age": {
+        "base": "20",
+        "intuitive": "1d4",
+        "self_taught": "1d6",
+        "trained": "2d6"
+      },
+      "height": {
+        "male_base": "75",
+        "female_base": "78",
+        "modifier": "2d10"
+      },
+      "weight": {
+        "male_base": "200",
+        "female_base": "225",
+        "modifier": "2d10*5"
+      },
+
+      "traits": [
+        {
+          "defensive_traits": [
+            {
+              "name": "Hardy",
+              "description": "Geit gain a +2 racial bonus on saving throws against poison spells and spell-like abilities."
+            }
+          ],
+          "feat_&_skill_traits": [],
+          "Magical Traits": [],
+          "Movement Traits": [],
+          "Offense Traits": [],
+          "Senses Traits": [],
+          "Weakness Traits": [],
+          "Other Traits": []
+        }
+      ],
+"male_names": [
+  "Kucha",
+  "Tamia",
+  "Quora",
+  "Chinpu",
+  "Auka",
+  "Wayna",
+  "Rauwa",
+  "Uluqu’u",
+  "Talla",
+  "Nyusta"
+],
+"female_names": [
+  "Rawa",
+  "Killa",
+  "Illapoma",
+  "Kaipa",
+  "Pillku",
+  "Sayri",
+  "Akwa",
+  "Tinkupuma",
+  "Sonk’O",
+  "Kuri"
+]
+
+    },
+    {
+"name": "Kame",
+      "culture": "Japanese",
+      "ability_scores": [
+        { "Wis": "+2" },
+        { "Con": "+2" },
+        { "Dex": "-2" }
+      ],
+      "age": {
+        "base": "25",
+        "intuitive": "1d6",
+        "self_taught": "2d6",
+        "trained": "3d6"
+      },
+      "height": {
+        "male_base": "45",
+        "female_base": "43",
+        "modifier": "2d4"
+      },
+      "weight": {
+        "male_base": "200",
+        "female_base": "180",
+        "modifier": "2d4*7"
+      },
+      
+      "traits": [
+        {
+          "defensive_traits": [
+            {
+              "name": "Hardy",
+              "description": "Geit gain a +2 racial bonus on saving throws against poison spells and spell-like abilities."
+            }
+          ],
+          "feat_&_skill_traits": [],
+          "Magical Traits": [],
+          "Movement Traits": [],
+          "Offense Traits": [],
+          "Senses Traits": [],
+          "Weakness Traits": [],
+          "Other Traits": []
+        }
+      ],
+"male_names": [
+  "Adi",
+  "Dwi",
+  "Haru",
+  "Kaito",
+  "Okubo",
+  "Takamichi",
+  "Yoshii",
+  "Yuto"
+],
+"female_names": [
+  "Akari",
+  "Chika",
+  "Erisa",
+  "Himari",
+  "Kazumi",
+  "Kimiko",
+  "Risa",
+  "Ruka",
+  "Utari",
+  "Yuuma"
+]
+
+    },
+    {
+"name": "Geit",
       "culture": "Norse",
       "ability_scores": [
-        { "ability": "Con", "modifier": "+2" },
-        { "ability": "Str", "modifier": "+2" },
-        { "ability": "Cha", "modifier": "-2" }
+        { "Con": "+2" },
+        { "Str": "+2" },
+        { "Cha": "-2" }
       ],
       "age": {
         "base": "14",
@@ -49,18 +269,36 @@
           ],
           "Magical Traits": [],
           "Movement Traits": [
-            "Mountaineer: Geit are immune to altitude sickness and do not lose their Dex bonus to AC when making Climb or Acrobatics checks to cross narrow or slippery surfaces.",
-            "Rock Stepper: Geit can skillfully navigate rocky terrain, ignoring difficult terrain caused by rubble, broken ground, or steep stairs."
+            {
+              "name": "Mountaineer",
+              "description": "Geit are immune to altitude sickness and do not lose their Dex bonus to AC when making Climb or Acrobatics checks to cross narrow or slippery surfaces."
+            },
+            {
+              "name": "Rock Stepper",
+              "description": "Geit can skillfully navigate rocky terrain, ignoring difficult terrain caused by rubble, broken ground, or steep stairs."
+            }
           ],
           "Offense Traits": [
-            "Frenzy: Once a day, Geit can go into a frenzy upon taking damage. This frenzy lasts for 1 minute (10 rounds) and adds a +2 racial bonus to Constitution and Strength, but a -2 to AC.",
-            "Hatred: Geit gain a +1 racial bonus on attack rolls against Plant Creatures.",
-            "Weapon Familiarity: Geit are proficient with Warhammers and Dwarven weapons."
+            {
+              "name": "Frenzy",
+              "description": "Once a day, Geit can go into a frenzy upon taking damage. This frenzy lasts for 1 minute (10 rounds) and adds a +2 racial bonus to Constitution and Strength, but a -2 to AC."
+            },
+            {
+              "name": "Hatred",
+              "description": "Geit gain a +1 racial bonus on attack rolls against Plant Creatures."
+            },
+            {
+              "name": "Weapon Familiarity",
+              "description": "Geit are proficient with Warhammers and Dwarven weapons."
+            }
           ],
           "Senses Traits": [],
           "Weakness Traits": [],
           "Other Traits": [
-            "Dark Vision: Geit can see 60’ in total darkness."
+            {
+              "name": "Dark Vision",
+              "description": "Geit can see 60’ in total darkness."
+            }
           ]
         }
       ],
@@ -83,13 +321,140 @@
       ]
     },
     {
-      "name": "Caeth",
+"name": "Caeth",
       "culture": "Celtic",
       "ability_scores": [
-        { "ability": "Cha", "modifier": "+2" },
-        { "ability": "Dex", "modifier": "+2" },
-        { "ability": "Wis", "modifier": "-2" }
-      ]
+        { "Cha": "+2" },
+        { "Dex": "+2" },
+        { "Wis": "-2" }
+      ],
+      "age": {
+        "base": "14",
+        "intuitive": "1d4",
+        "self_taught": "1d6",
+        "trained": "2d6"
+      },
+      "height": {
+        "male_base": "58",
+        "female_base": "53",
+        "modifier": "2d8"
+      },
+      "weight": {
+        "male_base": "120",
+        "female_base": "85",
+        "modifier": "2d8*5"
+      },
+
+      "traits": [
+  {
+    "defensive_traits": [
+      {
+        "name": "Hardy",
+        "description": "Geit gain a +2 racial bonus on saving throws against poison spells and spell-like abilities."
+      }
+    ],
+    "feat_&_skill_traits": [],
+    "Magical Traits": [],
+    "Movement Traits": [],
+    "Offense Traits": [],
+    "Senses Traits": [],
+    "Weakness Traits": [],
+    "Other Traits": []
+  }
+],
+"male_names": [
+  "Caladrel",
+  "Heldalel",
+  "Lanliss",
+  "Meirdrarel",
+  "Seldon",
+  "Talathel",
+  "Tauwir",
+  "Variel"
+],
+"female_names": [
+  "Amrunelara",
+  "Dardlara",
+  "Faunra",
+  "Jathal",
+  "Merisiel",
+  "Oparal",
+  "Soumral",
+  "Tessara",
+  "Yalandlara"
+]
+
+    },
+    {
+"name": "Avaar",
+      "culture": "Egyptian",
+      "ability_scores": [
+        { "Int": "+2" },
+        { "Dex": "+2" },
+        { "Con": "-2" }
+      ],
+      "age": {
+        "base": "12",
+        "intuitive": "1d4",
+        "self_taught": "1d6",
+        "trained": "2d6"
+      },
+      "height": {
+        "male_base": "65",
+        "female_base": "63",
+        "modifier": "2d8"
+      },
+      "weight": {
+        "male_base": "120",
+        "female_base": "110",
+        "modifier": "2d4*5"
+      },
+      "traits": [
+  {
+    "defensive_traits": [
+      {
+        "name": "Hardy",
+        "description": "Geit gain a +2 racial bonus on saving throws against poison spells and spell-like abilities."
+      }
+    ],
+    "feat_&_skill_traits": [],
+    "Magical Traits": [],
+    "Movement Traits": [],
+    "Offense Traits": [],
+    "Senses Traits": [],
+    "Weakness Traits": [],
+    "Other Traits": []
+  }
+],
+"male_names": [
+  "Azim",
+  "Akiike",
+  "Barid",
+  "Batsaikhan",
+  "Belor",
+  "Budi",
+  "Hadzi",
+  "Kjell",
+  "Nonek",
+  "Pateba",
+  "Seb",
+  "Tezman"
+],
+"female_names": [
+  "Aula",
+  "Bleka",
+  "Challa",
+  "Femi",
+  "Indra",
+  "Kamshi",
+  "Leyla",
+  "Meeka",
+  "Naytu",
+  "Pappi",
+  "Ronri",
+  "Safira",
+  "Sefu"
+]
     }
   ]
 }

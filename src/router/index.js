@@ -22,7 +22,7 @@ export const routes = [
     path: '/npc',
     component: () => import('@/views/npc/npc'),
     name: 'npc',
-    title: 'npc',
+    title: 'NPC',
     icon: 'el-icon-cpu',
   },
   { path: '/foo', component: Foo, title: 'Foo', icon: 'el-icon-menu' },
