@@ -4,7 +4,7 @@
     <trev-head />
 
     <el-container >
-      <el-aside width="200px" style="float: left;">
+      <el-aside width="150px" style="float: left;">
         <trev-nav />
       </el-aside>
 

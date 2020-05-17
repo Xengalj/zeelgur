@@ -1,52 +1,81 @@
 <template>
   <div id="app">
-
-    <el-form ref="npc" :model="npc" label-width="120px">
-
-      <el-row>
-        <el-col :span="10">
-          <el-form-item label="Name" icon="el-icon-female">
-            <el-input v-model="npc.name"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="10">
-          <el-form-item label="Race">
-            <el-input v-model="npc.race.name" />
-            <!--el-select v-model="form.region" placeholder="please select your zone">
-            Race drop down, onChange, reroll stats and name
-              <el-option label="Zone one" value="shanghai" />
-              <el-option label="Zone two" value="beijing" />
-            </el-select-->
-          </el-form-item>
-        </el-col>
-      </el-row>
+    <br>
+    <el-form ref="npc" :model="npc" label-width="75px">
 
       <el-row>
-        <el-col :span="10">
+        <el-col :span="6">
+          <el-form-item label="Name">
+            <el-input v-model="npc.name" :suffix-icon="npc.sexIcon" />
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
           <el-form-item label="Class">
-            <el-input v-model="npc.class" />
-            <!-- make dropdown -->
+            <el-select v-model="npc.class" :placeholder="npc.class">
+              <el-option
+                v-for="type in this.classes"
+                :key="type"
+                :value="type">
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
-        <el-col :span="10">
-          <el-form-item label="Level">
-            <el-input v-model="npc.level" />
-            <!-- add buttons to change level -->
+
+        <el-col :span="6">
+          <el-form-item label="Race">
+            <el-select v-model="npc.race" :placeholder="npc.race.name" @change="onRaceChange">
+              <el-option
+                v-for="race in this.races"
+                :key="race.name"
+                :value="race">
+                {{ race.name }}
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
+          <el-form-item label="Height">
+            <el-input v-model="npc.height" />
           </el-form-item>
         </el-col>
       </el-row>
 
-      <AbilityScores :race="npc.race" :re_roll="this.re_roll" v-on:abilities="onChildClick"/>
+      <el-row>
+        <el-col :span="6">
+          <el-form-item label="HP">
+            <el-input-number v-model="npc.HP.curr" :max="npc.HP.max" />
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
+          <el-form-item label="Level">
+            <el-input-number v-model="npc.level" />
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
+          <el-form-item label="Age">
+            <el-input v-model="npc.age" />
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="6">
+          <el-form-item label="Weight">
+            <el-input v-model="npc.weight" />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <AbilityScores ref="abilities" :race="npc.race" v-on:abilities="fromAbilities"/>
 
       <el-row>
         <hr>
         <h2>Defense</h2>
         <el-row>
           AC
-          <el-input-number v-model="npc.AC" @change="changeAC" :controls="false" />
-        </el-row>
-        <el-row>
-          HP
+          <el-input-number v-model="npc.AC" :controls="false" />
         </el-row>
         <el-row>
           Saves
@@ -86,10 +115,13 @@
       </el-row>
 
       <el-form-item>
-        {{ fromChild }}
         <el-button type="primary"@click="reRoll()">Re-Roll</el-button>
-        <el-button type="success" @click="submitForm('ruleForm')">Create</el-button>
+        <el-button type="success" @click="submitForm('npc')">Create</el-button>
       </el-form-item>
+
+      TESTING DATA:
+      <br><br>
+      {{ abilities }}
 
     </el-form>
   </div>
@@ -107,72 +139,77 @@ export default {
   },
   data() {
     return {
-      fromChild: '',
-      //abilities: ^
-      re_roll: false,
+      abilities: '',
+      races: '',
+      classes: ['Adept', 'Aristocrat', 'Commoner', 'Expert', 'Warrior'],
       npc: {
-        race: '', //entire race obj
         name: '',
+        race: '', //entire race obj
         sex: '', //1 Female, 2 Male
-        age: '',
-        height: '',
-        weight: '',
-        class: '', // NPC Class, []
-        level: 0,
-        str: { name: 'Str', base: 0, total: 0, mod: 0, perc: 0 },
-        dex: { name: 'Dex', base: 0, total: 0, mod: 0, perc: 0 },
-        con: { name: 'Con', base: 0, total: 0, mod: 0, perc: 0 },
-        int: { name: 'Int', base: 0, total: 0, mod: 0, perc: 0 },
-        wis: { name: 'Wis', base: 0, total: 0, mod: 0, perc: 0 },
-        cha: { name: 'Cha', base: 0, total: 0, mod: 0, perc: 0 },
+        sexIcon: 'el-icon-female',
+        age: 16,
+        height: '8\'10\"',
+        weight: '120 lbs',
 
-        AC: 10, //make computed, look at abilities
+        class: '',
+        level: 1,
+        HP: {
+          max: 10,
+          curr: 10
+        },
+
+        AC: 10,
+        armor: 0,
 
       },
     };
   },
   created() {
-    var race = races.races[Math.floor(Math.random() * races.races.length)];
-    this.npc.race = race
+    this.races = races.races;
+    this.npc.race = this.races[Math.floor(Math.random() * this.races.length)];
     this.npc.sex = Math.floor(Math.random() * 2);
+
+    //TODO: Set Hight & Weight & Age
+    //TODO: Set HP
+
+    this.npc.class = this.classes[Math.floor(Math.random() * 5)];
+
+
   },
   mounted() {
+    this.resetName();
     //this.reRoll();
   },
   methods: {
     reRoll() {
-      this.re_roll = true;
+      this.$refs.abilities.reRoll();
 
-      //Take out after adding the race dropdown ??
-      //var race = races.races[Math.floor(Math.random() * races.races.length)];
-      //this.npc.race = race;
+      this.npc.sex = Math.floor(Math.random() * 2);
+      this.resetName()
 
+      this.npc.class = this.classes[Math.floor(Math.random() * 5)];
+      this.npc.level = 10;
+
+    },
+    onRaceChange() {
+      this.resetName();
+    },
+    resetName() {
       this.npc.sex = Math.floor(Math.random() * 2);
       if (this.npc.sex == 1) {
         var name_int = Math.floor(Math.random() * this.npc.race.female_names.length);
-        this.npc.name = race.female_names[name_int];
-        document.querySelector(".el-form-item__label").classList.remove("el-icon-male");
-        document.querySelector(".el-form-item__label").classList.add("el-icon-female");
+        this.npc.name = this.npc.race.female_names[name_int];
+        this.npc.sexIcon = 'el-icon-female';
       } else {
         var name_int = Math.floor(Math.random() * this.npc.race.male_names.length);
-        this.npc.name = race.male_names[name_int];
-        document.querySelector(".el-form-item__label").classList.remove("el-icon-female");
-        document.querySelector(".el-form-item__label").classList.add("el-icon-male");
+        this.npc.name = this.npc.race.male_names[name_int];
+        this.npc.sexIcon = 'el-icon-male';
       }
-
-      this.npc.class = 'Fighter';
-      this.npc.level = 10;
-
-      this.re_roll = false;
-    },
-    onChildClick (value) {
-      //TODO: test if I can get all abl for AC and stuff
-      this.fromChild = value;
     },
 
-
-    changeAC() {
-      console.log(this.npc.AC);
+    setAC() {
+      var mod = Math.floor((this.abilities.dex.total - 10) / 2);
+      this.npc.AC = mod + 10 + this.npc.armor;
     },
 
     submitForm(formName) {
@@ -185,6 +222,12 @@ export default {
         }
       });
     },
+
+    fromAbilities(value) {
+      this.abilities = value;
+
+      this.setAC();
+      },
   },
 };
 </script>

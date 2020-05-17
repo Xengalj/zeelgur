@@ -11,7 +11,7 @@
           <template slot="title">
             <i :class="rule.icon"></i>{{ rule.title }}
           </template>
-          <el-menu-item v-for="child in rule.children" :index="rule.path + '/' + child.path">
+          <el-menu-item v-for="child in rule.children" :index="rule.path + '/' + child.path" :key="child.title">
             {{ child.title }}
           </el-menu-item>
         </el-submenu>

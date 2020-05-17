@@ -72,17 +72,8 @@
 <script>
 export default {
   name: 'AbilityScores',
-  props: {
-    re_roll: false,
-    race: ''
-  },
-  watch: {
-    re_roll: function () {
-      this.setAbilities();
-      this.setRacials();
-    },
-    race : function (value) { this.setRacials(); }
-  },
+  props: { race: '' },
+  watch: { race : function(value) { this.setRacials(); } },
   computed: {
     str_mod: function() { return Math.floor((this.npc.str.total-10) / 2); },
     dex_mod: function() { return Math.floor((this.npc.dex.total-10) / 2); },
@@ -140,15 +131,20 @@ export default {
         this.checkPerc(abl);
       }
     },
+    // reRoll is called by the parent component with this.$refs.[ref].reRoll()
+    reRoll() {
+      this.setAbilities();
+      this.setRacials();
+    },
     increase(abl) {
-      this.$emit('abilities', this.npc);
       abl.total += 1;
       this.checkPerc(abl);
+      this.$emit('abilities', this.npc);
     },
     decrease(abl) {
-      this.$emit('abilities', this.npc);
       abl.total -= 1;
       this.checkPerc(abl);
+      this.$emit('abilities', this.npc);
     },
     checkPerc(abl) {
       abl.perc = (abl.total - 8) * 10;
