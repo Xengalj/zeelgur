@@ -170,9 +170,9 @@ export default {
     this.npc.sex = Math.floor(Math.random() * 2);
 
     //TODO: Set Hight & Weight & Age
-    //TODO: Set HP
 
     this.npc.class = this.classes[Math.floor(Math.random() * 5)];
+    //TODO: Set HP
 
 
   },
@@ -181,11 +181,12 @@ export default {
     //this.reRoll();
   },
   methods: {
+    rollDice() {},
     reRoll() {
       this.$refs.abilities.reRoll();
 
       this.npc.sex = Math.floor(Math.random() * 2);
-      this.resetName()
+      this.resetName();
 
       this.npc.class = this.classes[Math.floor(Math.random() * 5)];
       this.npc.level = 10;
